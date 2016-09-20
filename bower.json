@@ -1,0 +1,16 @@
+{
+  "name": "purescript-halogen-framework7",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "output"
+  ],
+  "dependencies": {
+    "purescript-eff": "^1.0.0",
+    "purescript-halogen": "^0.11.0"
+  },
+  "devDependencies": {
+    "purescript-psci-support": "^1.0.0"
+  }
+}

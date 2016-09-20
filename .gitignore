@@ -1,0 +1,8 @@
+# Bower
+/bower_components/
+
+# PureScript
+/.pulp-cache/
+/.psci*
+/output
+.psa-stash
