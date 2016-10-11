@@ -15,6 +15,43 @@ foreign import data Searchbar :: *
 
 type InitializeParameters =
   { material :: Boolean
+  , materialPageLoadDelay :: Number
+  , materialRipple :: Boolean
+  , materialRippleElements :: String
+  , materialPreloaderHTML :: String
+  , cache :: Boolean
+  , cacheDuration :: Number
+  , cacheIgnore :: Array String
+  , cacheIgnoreGetParameter :: Boolean
+  , fastClicks :: Boolean
+  , fastClicksDelayBetweenClicks :: Number
+  , fastClicksDistanceThreshold :: Number
+  , activeState :: Boolean
+  , activeStateElements :: String
+  , tapHold :: Boolean
+  , tapHoldDelay :: Number
+  , tapHoldPreventClicks :: Boolean
+  }
+
+initializeDefaultParameters :: InitializeParameters
+initializeDefaultParameters =
+  { material: false
+  , materialPageLoadDelay: 0.0
+  , materialRipple: true
+  , materialRippleElements: ".ripple, a.link, a.item-link, .button, .modal-button, .tab-link, .label-radio, .label-checkbox, .actions-modal-button, a.searchbar-clear, .floating-button"
+  , materialPreloaderHTML: "<span class=\"preloader-inner\"><span class=\"preloader-inner-gap\"></span><span class=\"preloader-inner-left\"><span class=\"preloader-inner-half-circle\"></span></span><span class=\"preloader-inner-right\"><span class=\"preloader-inner-half-circle\"></span></span></span>"
+  , cache: true
+  , cacheDuration: 600000.0
+  , cacheIgnore: []
+  , cacheIgnoreGetParameter: false
+  , fastClicks: true
+  , fastClicksDelayBetweenClicks: 50.0
+  , fastClicksDistanceThreshold: 10.0
+  , activeState: true
+  , activeStateElements: "a, button, label, span"
+  , tapHold: false
+  , tapHoldDelay: 750.0
+  , tapHoldPreventClicks: true
   }
 
 -- | Initializes Framework7 using the specified parameters.
