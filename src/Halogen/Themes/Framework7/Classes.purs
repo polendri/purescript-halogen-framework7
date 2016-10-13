@@ -254,11 +254,14 @@ searchbarNotFound = className "searchbar-not-found"
 searchbarOverlay :: ClassName
 searchbarOverlay = className "searchbar-overlay"
 
+tab :: ClassName
+tab = className "tab"
+
 tabbar :: ClassName
 tabbar = className "tabbar"
 
-tab :: ClassName
-tab = className "tab"
+tabbarLabel :: ClassName
+tabbarLabel = className "tabbar-label"
 
 tablet5 :: ClassName
 tablet5 = className "tablet-5"
