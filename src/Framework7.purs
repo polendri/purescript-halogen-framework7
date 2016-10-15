@@ -8,7 +8,7 @@ module Framework7 where
 import Prelude
 import Control.Monad.Eff (Eff)
 import Control.Monad.Eff.Exception (EXCEPTION)
-import Data.Maybe (Maybe)
+import Data.Maybe (Maybe(..))
 
 foreign import data Framework7 :: *
 foreign import data View :: *
@@ -79,7 +79,7 @@ type NotificationParameters =
 
 addNotificationDefaultParameters :: NotificationParameters
 addNotificationDefaultParameters =
-  { message: String
+  { message: ""
   , title: Nothing
   , subtitle: Nothing
   , media: Nothing
