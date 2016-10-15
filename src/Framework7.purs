@@ -27,6 +27,7 @@ module Framework7
 import Prelude
 import Control.Monad.Eff (Eff)
 import Control.Monad.Eff.Exception (EXCEPTION)
+import Data.Foreign (Foreign, toForeign)
 import Data.Foreign.Undefined (Undefined(..))
 import Data.Maybe (Maybe(..))
 
@@ -113,29 +114,29 @@ defaultNotificationParameters =
 
 type ForeignNotificationParameters =
   { message :: String
-  , title :: Undefined String
-  , subtitle :: Undefined String
-  , media :: Undefined String
-  , hold :: Undefined Number
+  , title :: Foreign
+  , subtitle :: Foreign
+  , media :: Foreign
+  , hold :: Foreign
   , closeIcon :: Boolean
-  , button :: Undefined NotificationButton
+  , button :: Foreign
   , closeOnClick :: Boolean
-  , additionalClass :: Undefined String
-  , custom :: Undefined String
+  , additionalClass :: Foreign
+  , custom :: Foreign
   }
 
 toForeignNotificationParameters :: NotificationParameters -> ForeignNotificationParameters
 toForeignNotificationParameters ps =
   { message: ps.message
-  , title: Undefined ps.title
-  , subtitle: Undefined ps.subtitle
-  , media: Undefined ps.media
-  , hold: Undefined ps.hold
+  , title: toForeign $ Undefined ps.title
+  , subtitle: toForeign $ Undefined ps.subtitle
+  , media: toForeign $ Undefined ps.media
+  , hold: toForeign $ Undefined ps.hold
   , closeIcon: ps.closeIcon
-  , button: Undefined ps.button
+  , button: toForeign $ Undefined ps.button
   , closeOnClick: ps.closeOnClick
-  , additionalClass: Undefined ps.additionalClass
-  , custom: Undefined ps.custom
+  , additionalClass: toForeign $ Undefined ps.additionalClass
+  , custom: toForeign $ Undefined ps.custom
   }
 
 -- | Initializes Framework7 using the specified parameters.
