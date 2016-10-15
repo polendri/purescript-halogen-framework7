@@ -8,10 +8,12 @@ module Framework7 where
 import Prelude
 import Control.Monad.Eff (Eff)
 import Control.Monad.Eff.Exception (EXCEPTION)
+import Data.Maybe (Maybe)
 
 foreign import data Framework7 :: *
 foreign import data View :: *
 foreign import data Searchbar :: *
+foreign import data Notification :: *
 
 type InitializeParameters =
   { material :: Boolean
@@ -54,6 +56,26 @@ initializeDefaultParameters =
   , tapHoldPreventClicks: true
   }
 
+type NotificationButton =
+  { text :: String
+  , color :: String
+  , close :: Boolean
+  }
+
+type NotificationParameters =
+  { title :: Maybe String
+  , subtitle :: Maybe String
+  , media :: Maybe String
+  , hold :: Maybe Number
+  , closeIcon :: Boolean
+  , button :: Maybe NotificationButton
+  , closeOnClick :: Boolean
+  , additionalClass :: Maybe String
+  , custom :: Maybe String
+  --onClick
+  --onClose
+  }
+
 -- | Initializes Framework7 using the specified parameters.
 -- |
 -- | This wraps `new Framework7`.
@@ -87,3 +109,13 @@ foreign import routerBack :: forall eff. View -> Eff (err :: EXCEPTION | eff) Un
 -- | Given a view and an action, creates an event handler which routes the view
 -- | back one page, or runs the acion if there is no page to go back to.
 foreign import backButtonHandler :: forall eff. View -> Eff eff Unit -> Eff (err :: EXCEPTION | eff) Unit
+
+-- | Shows a notification with the specified parameters.
+-- |
+-- | This wraps `Framework7.addNotification()`.
+foreign import addNotification :: forall eff. Framework7 -> NotificationParameters -> Eff (err :: EXCEPTION | eff) Notification
+
+-- | Closes the specified notification.
+-- |
+-- | This wraps `Framework7.closeNotification()`.
+foreign import closeNotification :: forall eff. Framework7 -> Notification -> Eff (err :: EXCEPTION | eff) Unit

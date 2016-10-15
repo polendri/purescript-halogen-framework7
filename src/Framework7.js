@@ -59,3 +59,16 @@ exports.backButtonHandler = function(f7View) {
     }
   }
 }
+
+exports.addNotification = function(f7) {
+  return function(parameters) {
+    console.log(parameters);
+    return f7.addNotification(parameters);
+  }
+}
+
+exports.closeNotification = function(f7) {
+  return function(notificationElement) {
+    f7.closeNotification(notificationElement);
+  }
+}
