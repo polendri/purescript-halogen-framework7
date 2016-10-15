@@ -62,7 +62,6 @@ exports.backButtonHandler = function(f7View) {
 
 exports.addNotificationImpl = function(f7) {
   return function(parameters) {
-    console.log(parameters);
     return f7.addNotification(parameters);
   }
 }
