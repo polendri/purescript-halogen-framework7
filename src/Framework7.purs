@@ -63,7 +63,8 @@ type NotificationButton =
   }
 
 type NotificationParameters =
-  { title :: Maybe String
+  { message :: String
+  , title :: Maybe String
   , subtitle :: Maybe String
   , media :: Maybe String
   , hold :: Maybe Number
@@ -74,6 +75,20 @@ type NotificationParameters =
   , custom :: Maybe String
   --onClick
   --onClose
+  }
+
+addNotificationDefaultParameters :: NotificationParameters
+addNotificationDefaultParameters =
+  { message: String
+  , title: Nothing
+  , subtitle: Nothing
+  , media: Nothing
+  , hold: Nothing
+  , closeIcon: true
+  , button: Nothing
+  , closeOnClick: false
+  , additionalClass: Nothing
+  , custom: Nothing
   }
 
 -- | Initializes Framework7 using the specified parameters.
