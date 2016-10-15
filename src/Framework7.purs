@@ -3,11 +3,31 @@
 -- |
 -- | See https://framework7.io/docs for full documentation of the underlying
 -- | API.
-module Framework7 where
+module Framework7
+  ( Framework7
+  , InitializeParameters
+  , Notification
+  , NotificationButton
+  , NotificationParameters
+  , Searchbar
+  , View
+  , addNotification
+  , addView
+  , backButtonHandler
+  , closeNotification
+  , defaultInitializeParameters
+  , defaultNotificationParameters
+  , initialize
+  , routerBack
+  , routerLoad
+  , searchbar
+  , showTab
+  ) where
 
 import Prelude
 import Control.Monad.Eff (Eff)
 import Control.Monad.Eff.Exception (EXCEPTION)
+import Data.Foreign.Undefined (Undefined(..))
 import Data.Maybe (Maybe(..))
 
 foreign import data Framework7 :: *
@@ -35,8 +55,8 @@ type InitializeParameters =
   , tapHoldPreventClicks :: Boolean
   }
 
-initializeDefaultParameters :: InitializeParameters
-initializeDefaultParameters =
+defaultInitializeParameters :: InitializeParameters
+defaultInitializeParameters =
   { material: false
   , materialPageLoadDelay: 0.0
   , materialRipple: true
@@ -77,8 +97,8 @@ type NotificationParameters =
   --onClose
   }
 
-addNotificationDefaultParameters :: NotificationParameters
-addNotificationDefaultParameters =
+defaultNotificationParameters :: NotificationParameters
+defaultNotificationParameters =
   { message: ""
   , title: Nothing
   , subtitle: Nothing
@@ -89,6 +109,33 @@ addNotificationDefaultParameters =
   , closeOnClick: false
   , additionalClass: Nothing
   , custom: Nothing
+  }
+
+type ForeignNotificationParameters =
+  { message :: String
+  , title :: Undefined String
+  , subtitle :: Undefined String
+  , media :: Undefined String
+  , hold :: Undefined Number
+  , closeIcon :: Boolean
+  , button :: Undefined NotificationButton
+  , closeOnClick :: Boolean
+  , additionalClass :: Undefined String
+  , custom :: Undefined String
+  }
+
+toForeignNotificationParameters :: NotificationParameters -> ForeignNotificationParameters
+toForeignNotificationParameters ps =
+  { message: ps.message
+  , title: Undefined ps.title
+  , subtitle: Undefined ps.subtitle
+  , media: Undefined ps.media
+  , hold: Undefined ps.hold
+  , closeIcon: ps.closeIcon
+  , button: Undefined ps.button
+  , closeOnClick: ps.closeOnClick
+  , additionalClass: Undefined ps.additionalClass
+  , custom: Undefined ps.custom
   }
 
 -- | Initializes Framework7 using the specified parameters.
@@ -125,10 +172,13 @@ foreign import routerBack :: forall eff. View -> Eff (err :: EXCEPTION | eff) Un
 -- | back one page, or runs the acion if there is no page to go back to.
 foreign import backButtonHandler :: forall eff. View -> Eff eff Unit -> Eff (err :: EXCEPTION | eff) Unit
 
+foreign import addNotificationImpl :: forall eff. Framework7 -> ForeignNotificationParameters -> Eff (err :: EXCEPTION | eff) Notification
+
 -- | Shows a notification with the specified parameters.
 -- |
 -- | This wraps `Framework7.addNotification()`.
-foreign import addNotification :: forall eff. Framework7 -> NotificationParameters -> Eff (err :: EXCEPTION | eff) Notification
+addNotification :: forall eff. Framework7 -> NotificationParameters -> Eff (err :: EXCEPTION | eff) Notification
+addNotification f7 ps = addNotificationImpl f7 (toForeignNotificationParameters ps)
 
 -- | Closes the specified notification.
 -- |
