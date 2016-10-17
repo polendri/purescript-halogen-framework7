@@ -35,6 +35,9 @@ cached = className "cached"
 center :: ClassName
 center = className "center"
 
+closePanel :: ClassName
+closePanel = className "close-panel"
+
 col5 :: ClassName
 col5 = className "col-5"
 
@@ -215,6 +218,9 @@ navbarThrough = className "navbar-through"
 noGutter :: ClassName
 noGutter = className "no-gutter"
 
+openPanel :: ClassName
+openPanel = className "open-panel"
+
 page :: ClassName
 page = className "page"
 
@@ -223,6 +229,24 @@ pageContent = className "page-content"
 
 pages :: ClassName
 pages = className "pages"
+
+panel :: ClassName
+panel = className "panel"
+
+panelCover :: ClassName
+panelCover = className "panel-cover"
+
+panelLeft :: ClassName
+panelLeft = className "panel-left"
+
+panelOverlay :: ClassName
+panelOverlay = className "panel-overlay"
+
+panelReveal :: ClassName
+panelReveal = className "panel-reveal"
+
+panelRight :: ClassName
+panelRight = className "panel-right"
 
 right :: ClassName
 right = className "right"

@@ -71,3 +71,13 @@ exports.closeNotification = function(f7) {
     f7.closeNotification(notificationElement);
   }
 }
+
+exports.openPanel = function(f7) {
+  return function(panel) {
+    return f7.openPanel(panel);
+  }
+}
+
+exports.closePanel = function(f7) {
+  f7.closePanel();
+}

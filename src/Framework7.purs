@@ -38,15 +38,18 @@ foreign import data Searchbar :: *
 foreign import data Notification :: *
 
 type InitializeParameters =
+  -- Material Theme (Material theme only)
   { material :: Boolean
   , materialPageLoadDelay :: Number
   , materialRipple :: Boolean
   , materialRippleElements :: String
   , materialPreloaderHTML :: String
+  -- Caching
   , cache :: Boolean
   , cacheDuration :: Number
   , cacheIgnore :: Array String
   , cacheIgnoreGetParameter :: Boolean
+  -- Fast clicks library
   , fastClicks :: Boolean
   , fastClicksDelayBetweenClicks :: Number
   , fastClicksDistanceThreshold :: Number
@@ -55,6 +58,30 @@ type InitializeParameters =
   , tapHold :: Boolean
   , tapHoldDelay :: Number
   , tapHoldPreventClicks :: Boolean
+  -- Navigation / Router
+  -- Push State
+  -- Swipe back (iOS theme only)
+  -- Sortable Lists
+  -- Swipeout
+  -- Side Panels
+  --, swipePanel :: String
+  --, swipePanelCloseOpposite :: Boolean
+  --, swipePanelOnlyClose :: Boolean
+  --, swipePanelActiveArea :: Number
+  --, swipePanelNoFollow :: Boolean
+  --, swipePanelThreshold :: Number
+  --, swipePanelCloseByOutside :: Boolean
+  -- Modals
+  -- Smart Select
+  -- Navbars / Toolbars
+  -- Images Lazy Load
+  -- Notifications
+  -- Status Bar (iOS theme only)
+  -- Template7
+  -- Page Callbacks
+  -- Ajax Callbacks
+  -- Namespace
+  -- Init
   }
 
 defaultInitializeParameters :: InitializeParameters
@@ -76,6 +103,13 @@ defaultInitializeParameters =
   , tapHold: false
   , tapHoldDelay: 750.0
   , tapHoldPreventClicks: true
+  --, swipePanel: "false"
+  --, swipePanelCloseOpposite: true
+  --, swipePanelOnlyClose: false
+  --, swipePanelActiveArea: 0.0
+  --, swipePanelNoFollow: false
+  --, swipePanelThreshold: 0.0
+  --, swipePanelCloseByOutside: true
   }
 
 type NotificationButton =
@@ -188,3 +222,13 @@ addNotification f7 ps = addNotificationImpl f7 (toForeignNotificationParameters 
 -- |
 -- | This wraps `Framework7.closeNotification()`.
 foreign import closeNotification :: forall eff. Framework7 -> Notification -> Eff (err :: EXCEPTION | eff) Unit
+
+-- | Opens the specified panel (`"left"` or `"right"`).
+-- |
+-- | This wraps `Framework7.openPanel()`.
+foreign import openPanel :: forall eff. Framework7 -> String -> Eff (err :: EXCEPTION | eff) Unit
+
+-- | Closes any currently-open panel.
+-- |
+-- | This wraps `Framework7.closePanel()`.
+foreign import closePanel :: forall eff. Framework7 -> Eff (err :: EXCEPTION | eff) Unit
