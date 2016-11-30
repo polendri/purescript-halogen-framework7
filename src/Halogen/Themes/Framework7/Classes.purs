@@ -218,6 +218,9 @@ navbarThrough = className "navbar-through"
 noGutter :: ClassName
 noGutter = className "no-gutter"
 
+noRipple :: ClassName
+noRipple = className "no-ripple"
+
 openPanel :: ClassName
 openPanel = className "open-panel"
 
