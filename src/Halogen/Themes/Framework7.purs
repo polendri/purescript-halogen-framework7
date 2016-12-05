@@ -12,5 +12,8 @@ import Halogen.Themes.Framework7.Classes
 dataPage :: forall t. String -> Prop t
 dataPage p = Attr Nothing (attrName "data-page") p
 
+dataPopup :: forall t. String -> Prop t
+dataPopup p = Attr Nothing (attrName "data-popup") p
+
 dataSearchList :: forall t. String -> Prop t
 dataSearchList p = Attr Nothing (attrName "data-search-list") p

@@ -38,6 +38,9 @@ center = className "center"
 closePanel :: ClassName
 closePanel = className "close-panel"
 
+closePopup :: ClassName
+closePopup = className "close-popup"
+
 col5 :: ClassName
 col5 = className "col-5"
 
@@ -224,6 +227,9 @@ noRipple = className "no-ripple"
 openPanel :: ClassName
 openPanel = className "open-panel"
 
+openPopup :: ClassName
+openPopup = className "open-popup"
+
 page :: ClassName
 page = className "page"
 
@@ -250,6 +256,9 @@ panelReveal = className "panel-reveal"
 
 panelRight :: ClassName
 panelRight = className "panel-right"
+
+popup :: ClassName
+popup = className "popup"
 
 right :: ClassName
 right = className "right"
@@ -358,6 +367,9 @@ tablet100 = className "tablet-100"
 
 tabletAuto :: ClassName
 tabletAuto = className "tablet-auto"
+
+tabletFullscreen :: ClassName
+tabletFullscreen = className "tablet-fullscreen"
 
 tabletInset :: ClassName
 tabletInset = className "tablet-inset"
