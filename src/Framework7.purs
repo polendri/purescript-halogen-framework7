@@ -9,7 +9,7 @@ module Framework7
   , Notification
   , NotificationButton
   , NotificationParameters
-  , PageLoadAnimation
+  , PageLoadAnimation(..)
   , Searchbar
   , View
   , addNotification
