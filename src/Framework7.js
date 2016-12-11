@@ -47,11 +47,13 @@ exports.routerLoad = function(f7View) {
 
 exports.routerBack = function(f7View) {
   return function(pageName) {
-    return f7View.router.back({
-      pageName: pageName,
-      reload: true,
-      force: true
-    });
+    return function() {
+      return f7View.router.back({
+        pageName: pageName,
+        reload: true,
+        force: true
+      });
+    }
   }
 }
 
