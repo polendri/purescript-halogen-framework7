@@ -35,15 +35,23 @@ exports.routerLoad = function(f7View) {
   return function(pageName) {
     return function(animate) {
       return function() {
-        return f7View.router.load({ pageName: pageName, animatePages: animate });
+        return f7View.router.load({
+          pageName: pageName,
+          animatePages: animate,
+          reload: true
+        });
       }
     }
   }
 }
 
 exports.routerBack = function(f7View) {
-  return function() {
-    return f7View.router.back();
+  return function(pageName) {
+    return f7View.router.back({
+      pageName: pageName,
+      reload: true,
+      force: true
+    });
   }
 }
 
