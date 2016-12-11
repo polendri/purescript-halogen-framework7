@@ -9,7 +9,6 @@ module Framework7
   , Notification
   , NotificationButton
   , NotificationParameters
-  , PageLoadAnimation(..)
   , Searchbar
   , View
   , addNotification
@@ -19,7 +18,8 @@ module Framework7
   , defaultInitializeParameters
   , defaultNotificationParameters
   , initialize
-  , loadPage
+  , routerBack
+  , routerLoad
   , searchbar
   , showTab
   ) where
@@ -176,11 +176,6 @@ toForeignNotificationParameters ps =
   , custom: write $ Null ps.custom
   }
 
-data PageLoadAnimation
-  = NoAnimation
-  | ForwardAnimation
-  | BackAnimation
-
 -- | Initializes Framework7 using the specified parameters.
 -- |
 -- | This wraps `new Framework7`.
@@ -201,15 +196,15 @@ foreign import searchbar :: forall eff. Framework7 -> String -> Eff (err :: EXCE
 -- | This wraps `Framework7.showTab()`.
 foreign import showTab :: forall eff. Framework7 -> String -> Eff (err :: EXCEPTION | eff) Boolean
 
-foreign import routerLoad :: forall eff. View -> String -> Boolean -> Eff (err :: EXCEPTION | eff) Unit
-foreign import routerBack :: forall eff. View -> String -> Eff (err :: EXCEPTION | eff) Unit
-
 -- | Loads a page (specified by its `data-page` value) in a view.
-loadPage :: forall eff. View -> String -> PageLoadAnimation -> Eff (err :: EXCEPTION | eff) Unit
-loadPage view page anim = case anim of
-  NoAnimation -> routerLoad view page false
-  ForwardAnimation -> routerLoad view page true
-  BackAnimation -> routerBack view page
+-- |
+-- | This wraps `View.router.load()`.
+foreign import routerLoad :: forall eff. View -> String -> Eff (err :: EXCEPTION | eff) Unit
+
+-- | Moves a view back one page in its history.
+-- |
+-- | This wraps `View.router.back()`.
+foreign import routerBack :: forall eff. View -> Eff (err :: EXCEPTION | eff) Unit
 
 -- | Given a view and an action, creates an event handler which routes the view
 -- | back one page, or runs the acion if there is no page to go back to.

@@ -33,27 +33,15 @@ exports.showTab = function(f7) {
 
 exports.routerLoad = function(f7View) {
   return function(pageName) {
-    return function(animate) {
-      return function() {
-        return f7View.router.load({
-          pageName: pageName,
-          animatePages: animate,
-          reload: true
-        });
-      }
+    return function() {
+      return f7View.router.load({ pageName: pageName });
     }
   }
 }
 
 exports.routerBack = function(f7View) {
-  return function(pageName) {
-    return function() {
-      return f7View.router.back({
-        pageName: pageName,
-        reload: true,
-        force: true
-      });
-    }
+  return function() {
+    return f7View.router.back();
   }
 }
 
