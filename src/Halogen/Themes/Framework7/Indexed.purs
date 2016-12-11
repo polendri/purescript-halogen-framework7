@@ -1,5 +1,7 @@
 module Halogen.Themes.Framework7.Indexed
   ( dataPage
+  , dataPanel
+  , dataPopup
   , dataSearchList
   , module F7C
   ) where

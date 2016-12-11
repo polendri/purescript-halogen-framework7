@@ -1,5 +1,7 @@
 module Halogen.Themes.Framework7
   ( dataPage
+  , dataPanel
+  , dataPopup
   , dataSearchList
   , module Halogen.Themes.Framework7.Classes
   ) where
